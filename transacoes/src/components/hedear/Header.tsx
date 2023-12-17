@@ -9,8 +9,23 @@ export function Header(){
             <HeaderContent>
                 <ImageLogo  src={logo} alt="logoMoney" />
 
+                <Dialog.Root>
+                    <Dialog.Trigger asChild>
+                        <NewTransationsButton>
+                            Nova transação
+                       </NewTransationsButton>
+                    </Dialog.Trigger>
 
-                <NewTransationsButton>Nova transação</NewTransationsButton>
+                    <Dialog.Portal>
+                            <Dialog.Overlay />
+
+                            <Dialog.Content>
+                                <Dialog.Title>Nova transação</Dialog.Title>
+                                <Dialog.Close />
+                            </Dialog.Content>
+                    </Dialog.Portal>
+                </Dialog.Root>
+                
             </HeaderContent>
         </HeaderContainer>
     )
