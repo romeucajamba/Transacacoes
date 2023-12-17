@@ -12,7 +12,5 @@ export function App() {
     <GlobalStyle/>
      <Transations/>
    </ThemeProvider>
-
-  
   )
 }
