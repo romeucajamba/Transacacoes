@@ -17,8 +17,8 @@ export const Content = styled(Dialog.Content)`
     background: ${props => props.theme['gray-800']};
 
     position: fixed;
-    top: 50%;
-    left: 25%;
+    top: 20%;
+    left: 30%;
     transform: translate(-50% -50%);
 
     form{
@@ -38,7 +38,7 @@ export const Content = styled(Dialog.Content)`
                 color: ${props => props.theme['gray-500']};
             }
         }
-        bottom[type='submit']{
+        button[type='submit']{
             height: 50px;
             border: 0;
             background: ${props => props.theme['green-500']};
@@ -68,4 +68,33 @@ export const CloseButton = styled(Dialog.Close)`
     line-height: 0;
     cursor: pointer;
     color: ${props => props.theme['gray-500']};
+`;
+
+
+export const TransationType = styled.div`
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 0.5rem;
+
+`;
+
+interface TransationTypeButtonProps {
+    variant?: 'income' | 'autcome';
+}
+
+export const TransationTypeButton = styled.button< TransationTypeButtonProps >`
+    background: ${props => props.theme['gray-700']};
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 0;
+    color: ${props => props.theme['gray-300']};
+
+    svg {
+        color: ${props => props.variant == 'income' ? props.theme['green-300'] : props.theme['red-300']} ;
+    }
 `;
