@@ -1,0 +1,52 @@
+{
+        "transations": [
+            {
+                "id": 1,
+                "description": "Desenvolvimento de webApp",
+                "type": "income",
+                "category": "Venda",
+                "price": 300,
+                "createAt": "2023-12-19T16:44:42.060Z"
+            },
+            {
+                "id": 2,
+                "description": "Desenvolvimento de mobile",
+                "type": "income",
+                "category": "Venda",
+                "price": 470,
+                "createAt": "2023-12-19T16:44:42.060Z"
+            },
+            {
+                "id": 3,
+                "description": "Desenvolvimento Desktop",
+                "type": "income",
+                "category": "Venda",
+                "price": 1.00000000,
+                "createAt": "2023-12-19T16:44:42.060Z"
+            },
+            {
+                "id": 4,
+                "description": "Criação de postes",
+                "type": "income",
+                "category": "Venda",
+                "price": 5000,
+                "createAt": "2023-12-19T16:44:42.060Z"
+            },
+            {
+                "id": 5,
+                "description": "Criação de cartazes, rotolos, embalagens",
+                "type": "income",
+                "category": "Venda",
+                "price": 8.00000,
+                "createAt": "2023-12-19T16:44:42.060Z"
+            },
+            {
+                "id": 6,
+                "description": "Criação de identidade visual",
+                "type": "income",
+                "category": "Venda",
+                "price": 50.000,
+                "createAt": "2023-12-19T16:44:42.060Z"
+            }
+        ]    
+}

@@ -4,6 +4,8 @@ import {TransationsContainer, TransactionsTable, PrinceHighLigh } from './styles
 import {SearcHForm} from '../../pages/trasations/components/SearchForm';
 
 export function Transations(){
+    //Pegando a lista de transações atraveis da API
+
     return(
         <div>
             <Header/>
