@@ -4,6 +4,7 @@ import {TransationsContainer, TransactionsTable, PrinceHighLigh } from './styles
 import {SearcHForm} from '../../pages/trasations/components/SearchForm';
 import { useContext } from 'react';
 import { TransationsContext } from '../../context/TransationsContext';
+import { priceFormatter } from '../../utils/formatter';
 
 
 export function Transations(){
@@ -28,7 +29,7 @@ export function Transations(){
                                              <td width="50%">{transations.description}</td>
                                              <td>
                                                 <PrinceHighLigh variant={transations.type}>
-                                                   {transations.price}
+                                                   {priceFormatter.format(transations.price)}
                                                  </PrinceHighLigh>
                                              </td>
                                              <td>{transations.category}</td>

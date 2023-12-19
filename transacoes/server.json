@@ -49,11 +49,19 @@
                 "createAt": "2023-12-19T16:44:42.060Z"
             },
             {
-                "id": 6,
-                "description": "Criação de identidade visual",
-                "type": "income",
-                "category": "Venda",
-                "price": 50.000,
+                "id": 7,
+                "description": "Yhanko",
+                "type": "outcome",
+                "category": "Despesa",
+                "price": 70.000,
+                "createAt": "2023-12-19T16:44:42.060Z"
+            },
+            {
+                "id": 8,
+                "description": "Yhanko",
+                "type": "outcome",
+                "category": "Despesa para computadores",
+                "price": 340.000,
                 "createAt": "2023-12-19T16:44:42.060Z"
             }
         ]    
