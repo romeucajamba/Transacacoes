@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import * as Dialog from '@radix-ui/react-dialog';
+import * as RadioGroup from '@radix-ui/react-radio-group';
 
 
 export const Overlay = styled(Dialog.Overlay)`
@@ -71,7 +72,7 @@ export const CloseButton = styled(Dialog.Close)`
 `;
 
 
-export const TransationType = styled.div`
+export const TransationType = styled(RadioGroup.Root)`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     margin-top: 0.5rem;
@@ -82,19 +83,34 @@ interface TransationTypeButtonProps {
     variant?: 'income' | 'autcome';
 }
 
-export const TransationTypeButton = styled.button< TransationTypeButtonProps >`
+export const TransationTypeButton = styled(RadioGroup.Item)< TransationTypeButtonProps >`
+    width:12rem ;
+    height: 3rem;
     background: ${props => props.theme['gray-700']};
     padding: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 4rem;
     border-radius: 6px;
+    gap: 0.5rem;
     cursor: pointer;
     border: 0;
     color: ${props => props.theme['gray-300']};
 
     svg {
         color: ${props => props.variant == 'income' ? props.theme['green-300'] : props.theme['red-300']} ;
+    }
+    
+    &[data-state='unchecked']:hover {
+        background: ${props => props.theme['gray-600']};
+    }
+
+    &[data-state='checked']{
+        color: ${props => props.theme.white};
+        background: ${props => props.variant == 'income' ? props.theme['green-500'] : props.theme['red-500']};
+        
+        svg{
+            color: ${props => props.theme.white};
+        }
     }
 `;
