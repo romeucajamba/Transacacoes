@@ -17,13 +17,16 @@ interface TransationsContextType {
     transations: Transations[];
 }
 
-const TransationsContext = createContext({} as  TransationsContextType )
-
-interface TransationsContextProps {
+interface TransationsProviderProps {
     children : ReactNode;
 }
 
-export function TransationsProvider({children}: TransationsContextProps){
+
+//Exportando a minha transationsContext para usar no componente transitions
+export const TransationsContext = createContext({} as  TransationsContextType)
+
+
+export function TransationsProvider({children}: TransationsProviderProps){
      //armazenando as informações da api para ser mostrado em tela
      const [transations, setTransations] = useState<Transations[]>([])//Nosso estado está armazenando uma lista de transations
 

@@ -1,8 +1,8 @@
 import { ThemeProvider } from "styled-components";
 import { defaultTheme } from "./styles/theme/default";
 import { GlobalStyle } from "./styles/global";
+import {TransationsProvider} from "./context/TransationsContext";
 import { Transations } from "./pages/trasations";
-import { TransationsProvider } from "./context/TransationsContext";
 
 export function App() {
 
@@ -12,9 +12,15 @@ export function App() {
    <ThemeProvider theme={defaultTheme}>
     <GlobalStyle/>
 
+    {/*
+     *  Meu Contexto para partilha de informações e propriedades
+     *  entre os componentes
+     */}
     <TransationsProvider>
-      <Transations/>
+        <Transations/>
     </TransationsProvider>
+      
+   
     
    </ThemeProvider>
   )
