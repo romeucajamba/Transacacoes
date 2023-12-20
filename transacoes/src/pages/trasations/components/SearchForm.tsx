@@ -3,6 +3,7 @@ import {useForm} from 'react-hook-form';
 import {SearchformContainer} from './styles';
 import {MagnifyingGlass} from 'phosphor-react';
 import * as z from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { TransationsContext } from '../../../context/TransationsContext';
 
 
@@ -14,9 +15,9 @@ const searchFormSchema = z.object({
 type SearchFormInputs = z.infer<typeof searchFormSchema>
 
 export function SearcHForm(){
-    const {register, handleSubmit} = useForm<SearchFormInputs>(
+    const {register, handleSubmit, formState: {isSubmitting}} = useForm<SearchFormInputs>(
         {
-            
+            resolver: zodResolver(searchFormSchema),
         }
     )
 
@@ -34,7 +35,7 @@ export function SearcHForm(){
                     {...register('query')}
                 />
             
-            <button type='submit' >
+            <button type='submit' disabled={isSubmitting}>
                 <MagnifyingGlass  size={20}/>
                 Pesquisar
             </button>
