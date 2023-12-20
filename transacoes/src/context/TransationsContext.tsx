@@ -13,15 +13,25 @@ interface Transations {
     price: number;
 }
 
+interface CreateTransationsInput {
+    description: string,
+    type: 'income' | 'outcome',
+    category: string,
+    price: number,
+}
+
 
 interface TransationsContextType {
     transations: Transations[];
     fetchTransations: (query?: string) => Promise<void>;
+    createTransation: (data: CreateTransationsInput) => Promise<void>;
 }
 
 interface TransationsProviderProps {
     children : ReactNode;
 }
+
+
 
 
 //Exportando a minha transationsContext para usar no componente transitions
@@ -38,6 +48,8 @@ export function TransationsProvider({children}: TransationsProviderProps){
 
          const response = await api.get('/transations', {
             params: {
+                _sort: 'createdAt',
+                _order: 'desc',
                 q: query,
             }
          })  
@@ -46,6 +58,19 @@ export function TransationsProvider({children}: TransationsProviderProps){
          setTransations(response.data)
         }
         
+        async function createTransation(data: CreateTransationsInput){
+            const response =   await api.post('transations', {
+
+                description: data.description,
+                type: data.type ,
+                category: data.category,
+                price: data.price,
+                createAt: new Date()
+            })
+
+            setTransations(state => [response.data, ...state])
+        }
+
      useEffect(() => {
       
          fetchTransations()
@@ -53,7 +78,7 @@ export function TransationsProvider({children}: TransationsProviderProps){
  
 
     return (
-        <TransationsContext.Provider value={{transations, fetchTransations}}>
+        <TransationsContext.Provider value={{transations, fetchTransations, createTransation}}>
                 {children}
         </TransationsContext.Provider>
     )
