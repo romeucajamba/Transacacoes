@@ -1,5 +1,6 @@
 import { ReactNode, createContext } from "react";
 import { useEffect, useState } from 'react';
+import { api } from "../lib/axios";
 
 
 //tipando os dados da minha transação
@@ -33,20 +34,16 @@ export function TransationsProvider({children}: TransationsProviderProps){
 
      //Pegando a lista de transações atraveis da API
      //Método fetch do navegador para pegar os dados da api de modo assincrono
-     async function fetchTransations(query?: string){
+     async function fetchTransations(query?: string){ 
 
-            const url = new URL('http://localhost:5000/transations')
-
-            if(query){
-                url.searchParams.append('q', query)
+         const response = await api.get('/transations', {
+            params: {
+                q: query,
             }
-         //armazenando os dados vindo da minha api na variavel response
-         const response = await fetch(url);
-         //convertendo os dados da api que está armazenado no response em json e guaradr na variavel data
-         const data = await response.json()
+         })  
          
-             //armazenando os dados da api no meu useState
-         setTransations(data)
+             
+         setTransations(response.data)
         }
         
      useEffect(() => {
