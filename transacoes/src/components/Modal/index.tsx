@@ -2,7 +2,7 @@ import * as Dialog from '@radix-ui/react-dialog';
 import {Overlay, Content, CloseButton, TransationType, TransationTypeButton} from './styles';
 import { X, ArrowCircleUp, ArrowCircleDown } from 'phosphor-react';
 import * as z from 'zod';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 const newTransationsFormSchema = z.object({
@@ -15,8 +15,11 @@ const newTransationsFormSchema = z.object({
 type NewTransationsFormInputs = z.infer<typeof newTransationsFormSchema>;
 
 export function NewTransationsModal(){
-    const {register, handleSubmit, formState: {isSubmitting}} = useForm<NewTransationsFormInputs>({
-        resolver: zodResolver(newTransationsFormSchema)
+    const {register, handleSubmit, control, formState: {isSubmitting}} = useForm<NewTransationsFormInputs>({
+        resolver: zodResolver(newTransationsFormSchema),
+        defaultValues: {
+            type: 'income',
+        }
     })
 
    async function handleCreateNewTransation(data: NewTransationsFormInputs){
@@ -52,18 +55,29 @@ export function NewTransationsModal(){
                     required
                     {...register('category')}
                     />
-
-                <TransationType>
-                    <TransationTypeButton variant='income' value='income'>
-                        <ArrowCircleUp  size={25}/>
-                        Entrada
-                    </TransationTypeButton>
-
-                    <TransationTypeButton variant='autcome' value='autcome'>
-                        <ArrowCircleDown size={25}/>
-                        Saída
-                    </TransationTypeButton>
-                </TransationType>
+                {/**Trabalhando com o conceito de controler do React-hook-form quando 
+                 * se trata de componente não 
+                 * nativo do html e faz parte do formulario para envio de informações */}
+               <Controller
+                control={control}
+                name="type"
+                render={({field}) => {
+                    return (
+                        <TransationType onValueChange={field.onChange} value={field.value}>
+                            <TransationTypeButton variant='income' value='income'>
+                                <ArrowCircleUp  size={25}/>
+                                Entrada
+                            </TransationTypeButton>
+    
+                            <TransationTypeButton variant='autcome' value='autcome'>
+                                <ArrowCircleDown size={25}/>
+                                Saída
+                            </TransationTypeButton>
+                       </TransationType>
+                        
+                    )
+                }}
+               />
 
                 <button type="submit" disabled={isSubmitting}>Cadastrar</button>
             </form>
