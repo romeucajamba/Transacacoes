@@ -9,12 +9,13 @@ interface Transations {
     type: 'income' | 'outcome';
     category: 'string';
     createAt: string;
-    price: number
+    price: number;
 }
 
 
 interface TransationsContextType {
     transations: Transations[];
+    fetchTransations: (query?: string) => Promise<void>;
 }
 
 interface TransationsProviderProps {
@@ -32,9 +33,15 @@ export function TransationsProvider({children}: TransationsProviderProps){
 
      //Pegando a lista de transações atraveis da API
      //Método fetch do navegador para pegar os dados da api de modo assincrono
-     async function loadTransations(){
+     async function fetchTransations(query?: string){
+
+            const url = new URL('http://localhost:5000/transations')
+
+            if(query){
+                url.searchParams.append('q', query)
+            }
          //armazenando os dados vindo da minha api na variavel response
-         const response = await fetch('http://localhost:5000/transations');
+         const response = await fetch(url);
          //convertendo os dados da api que está armazenado no response em json e guaradr na variavel data
          const data = await response.json()
          
@@ -44,12 +51,12 @@ export function TransationsProvider({children}: TransationsProviderProps){
         
      useEffect(() => {
       
-         loadTransations()
+         fetchTransations()
      }, [])//por causa do array de dependencia vazio, ele só executará uma vez
  
 
     return (
-        <TransationsContext.Provider value={{transations}}>
+        <TransationsContext.Provider value={{transations, fetchTransations}}>
                 {children}
         </TransationsContext.Provider>
     )
