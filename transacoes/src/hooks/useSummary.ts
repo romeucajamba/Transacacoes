@@ -1,6 +1,5 @@
 import { TransationsContext } from '../context/TransationsContext';
 import { useContextSelector } from 'use-context-selector';
-import { useMemo } from 'react';
 
 //Meu hook ussummary criado para ter os calculos dos preços das trasanções
 
