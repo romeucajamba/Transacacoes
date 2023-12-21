@@ -61,7 +61,8 @@ export function TransationsProvider({children}: TransationsProviderProps){
         async function createTransation(data: CreateTransationsInput){
             const response =   await api.post('transations', {
 
-                description: data.description,
+                description: data.description
+                ,
                 type: data.type ,
                 category: data.category,
                 price: data.price,

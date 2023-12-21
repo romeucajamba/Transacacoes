@@ -57,28 +57,68 @@
       "createAt": "2023-12-19T16:44:42.060Z"
     },
     {
-      "id": 8,
-      "description": "Yhanko",
-      "type": "outcome",
-      "category": "Despesa para computadores",
-      "price": 340,
-      "createAt": "2023-12-19T16:44:42.060Z"
-    },
-    {
-      "description": "Prototipo mobile",
+      "description": "Bola",
       "type": "income",
       "category": "Venda",
-      "price": 60,
-      "createAt": "2023-12-20T14:30:20.558Z",
-      "id": 9
+      "price": 50,
+      "createAt": "2023-12-21T00:15:26.209Z",
+      "id": 8
     },
     {
-      "description": "Jogos de guerra",
+      "description": "PlayStation",
       "type": "income",
       "category": "Venda",
       "price": 500,
-      "createAt": "2023-12-20T15:22:51.242Z",
+      "createAt": "2023-12-21T00:17:44.800Z",
+      "id": 9
+    },
+    {
+      "description": "softw",
+      "type": "income",
+      "category": "compra",
+      "price": 500000,
+      "createAt": "2023-12-21T00:23:21.150Z",
       "id": 10
+    },
+    {
+      "description": "Software de gestão",
+      "type": "income",
+      "category": "Venda",
+      "price": 500786,
+      "createAt": "2023-12-21T00:32:20.429Z",
+      "id": 11
+    },
+    {
+      "description": "Faturação",
+      "type": "income",
+      "category": "Venda",
+      "price": 408743,
+      "createAt": "2023-12-21T00:33:13.761Z",
+      "id": 12
+    },
+    {
+      "description": "router",
+      "type": "income",
+      "category": "Venda",
+      "price": 500000,
+      "createAt": "2023-12-21T10:27:40.746Z",
+      "id": 13
+    },
+    {
+      "description": "facebool",
+      "type": "income",
+      "category": "Venda",
+      "price": 400000,
+      "createAt": "2023-12-21T10:28:20.533Z",
+      "id": 14
+    },
+    {
+      "description": "Instagram",
+      "type": "income",
+      "category": "Venda",
+      "price": 87999,
+      "createAt": "2023-12-21T10:29:12.966Z",
+      "id": 15
     }
   ]
 }
