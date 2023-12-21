@@ -6,6 +6,7 @@ import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useContextSelector } from 'use-context-selector';
 import {TransationsContext} from '../../context/TransationsContext';
+///outcome | income
 
 const newTransationsFormSchema = z.object({
     description: z.string(),
@@ -88,7 +89,7 @@ export function NewTransationsModal(){
                                 Entrada
                             </TransationTypeButton>
     
-                            <TransationTypeButton variant='autcome' value='autcome'>
+                            <TransationTypeButton variant='autcome' value='outcome'>
                                 <ArrowCircleDown size={25}/>
                                 Saída
                             </TransationTypeButton>

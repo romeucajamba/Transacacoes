@@ -119,6 +119,14 @@
       "price": 87999,
       "createAt": "2023-12-21T10:29:12.966Z",
       "id": 15
+    },
+    {
+      "description": "E-commerce",
+      "type": "outcome",
+      "category": "compra",
+      "price": 300000,
+      "createAt": "2023-12-21T13:19:43.961Z",
+      "id": 16
     }
   ]
 }
