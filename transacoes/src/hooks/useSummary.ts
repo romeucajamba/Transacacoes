@@ -1,13 +1,16 @@
-import { useContext } from 'react';
 import { TransationsContext } from '../context/TransationsContext';
+import { useContextSelector } from 'use-context-selector';
+import { useMemo } from 'react';
 
 //Meu hook ussummary criado para ter os calculos dos preços das trasanções
 
 export function useSummary(){
-    const {transations} = useContext(TransationsContext)
+    const transations = useContextSelector(TransationsContext, (context) => {
+        return context.transations;
+    })
 
     //usando metodo de arrray reduce para somar todos os valores
-    const summary = transations.reduce(
+    const summary =  transations.reduce(
         (acc, transation) => {
             
             if(transation.type == 'income'){

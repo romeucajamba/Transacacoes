@@ -1,10 +1,10 @@
-import { useContext } from 'react';
 import {useForm} from 'react-hook-form';
 import {SearchformContainer} from './styles';
 import {MagnifyingGlass} from 'phosphor-react';
 import * as z from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { TransationsContext } from '../../../context/TransationsContext';
+import { useContextSelector } from 'use-context-selector';
 
 
 const searchFormSchema = z.object({
@@ -22,7 +22,9 @@ export function SearcHForm(){
     )
 
 
-    const {fetchTransations} = useContext(TransationsContext)
+    const fetchTransations = useContextSelector(TransationsContext, (context) => {
+        return context.fetchTransations
+    })
 
         async function hadleSearchTransations(data: SearchFormInputs){
             await fetchTransations(data.query)

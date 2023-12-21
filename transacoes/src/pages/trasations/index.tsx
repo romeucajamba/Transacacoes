@@ -2,13 +2,15 @@ import {Header} from '../../components/hedear/Header';
 import {Summary} from '../../components/summary/Summary';
 import {TransationsContainer, TransactionsTable, PrinceHighLigh } from './styles';
 import {SearcHForm} from '../../pages/trasations/components/SearchForm';
-import { useContext } from 'react';
 import { TransationsContext } from '../../context/TransationsContext';
 import { dateFormatter, priceFormatter } from '../../utils/formatter';
+import { useContextSelector } from 'use-context-selector';
 
 
 export function Transations(){
-  const {transations} = useContext(TransationsContext)
+  const transations = useContextSelector(TransationsContext, (context) => {
+    return context.transations;
+  })
    
     return(
         <div>

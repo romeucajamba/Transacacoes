@@ -1,5 +1,5 @@
-import { ReactNode, createContext } from "react";
-import { useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState, useCallback  } from "react";
+import {createContext} from 'use-context-selector';
 import { api } from "../lib/axios";
 
 
@@ -44,7 +44,7 @@ export function TransationsProvider({children}: TransationsProviderProps){
 
      //Pegando a lista de transações atraveis da API
      //Método fetch do navegador para pegar os dados da api de modo assincrono
-     async function fetchTransations(query?: string){ 
+     const fetchTransations = useCallback(async(query?: string) =>{ 
 
          const response = await api.get('/transations', {
             params: {
@@ -56,26 +56,28 @@ export function TransationsProvider({children}: TransationsProviderProps){
          
              
          setTransations(response.data)
-        }
+        }, [])
         
-        async function createTransation(data: CreateTransationsInput){
-            const response =   await api.post('transations', {
-
-                description: data.description
-                ,
-                type: data.type ,
-                category: data.category,
-                price: data.price,
-                createAt: new Date()
-            })
-
-            setTransations(state => [response.data, ...state])
-        }
+        const createTransation = useCallback(
+            async (data: CreateTransationsInput) => {
+                const response =   await api.post('transations', {
+    
+                    description: data.description
+                    ,
+                    type: data.type ,
+                    category: data.category,
+                    price: data.price,
+                    createAt: new Date()
+                })
+    
+                setTransations(state => [response.data, ...state])
+            },
+        [])
 
      useEffect(() => {
       
          fetchTransations()
-     }, [])//por causa do array de dependencia vazio, ele só executará uma vez
+     }, [fetchTransations])//por causa do array de dependencia vazio, ele só executará uma vez
  
 
     return (
